@@ -5,6 +5,9 @@ import Logo from "../assets/TokoraPayLogo.png";
 import { FaShare, FaPlane, FaEye, FaEyeSlash } from "react-icons/fa";
 import BGImage from "../assets/2logo.png";
 import TransactionRow from "./TransactionRow";
+import { Icon } from '@iconify/react';
+import paperImage from '@iconify/icons-mdi/paper-plane';
+
 
 const dummyTransactions = [
   { id: 1, type: "sent", name: "Esimvie Izu", amount: "1,500 USDC", ngn: "2,280,000 NGN", time: "5:43 PM" },
@@ -29,7 +32,7 @@ const Home = () => {
   const transactionsToShow = expandedHistory ? dummyTransactions.slice(0, 8) : dummyTransactions.slice(0, 4);
 
   return (
-    <div className="flex flex-col h-screen bg-[#E9E7E5] pb-24 relative">
+    <div className=" h-screen flex flex-col bg-[#E9E7E5] pb-24 relative">
       {/* Header */}
       <div className="flex justify-between items-center p-4 z-30 relative">
         <img src={Logo} alt="" />
@@ -64,10 +67,16 @@ const Home = () => {
           </div>
           <div className="flex gap-4">
             <button className="flex-1 text-white bg-orange-500 rounded-full py-3 font-semibold flex items-center justify-center gap-3 text-lg">
-              <FaShare /> Send
+              <Icon icon={paperImage} 
+               style={{ transform: "rotate(-45deg)" }} 
+              />
+               Send
             </button>
-            <button className="flex-1 bg-white text-orange-500 rounded-full py-3 font-semibold flex items-center justify-center gap-3 text-lg">
-              <FaPlane /> Receive
+            <button className="flex-1 bg-white text-black rounded-full py-3 font-semibold flex items-center justify-center gap-3 text-lg">
+              <Icon icon={paperImage} 
+               style={{ transform: "rotate(135deg)" }} 
+              />
+               Receive
             </button>
           </div>
         </div>

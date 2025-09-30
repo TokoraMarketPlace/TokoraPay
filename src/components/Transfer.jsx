@@ -1,29 +1,47 @@
 import React, { useState } from "react";
 import { ArrowLeft, Building2 } from "lucide-react";
+import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Transfer = () => {
   const [accountNumber, setAccountNumber] = useState("");
   const [bank, setBank] = useState("");
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
 
-  const handleNext = () => {
+  
+
+  const handleNext = (e) => {
+    e.preventDefault();
+    setError("");
+
+    if (!accountNumber || !bank) {
+      setError("Please fill in all fields.");
+      return;
+    }
+
     console.log("Account Number:", accountNumber);
     console.log("Bank:", bank);
+
+    navigate("/confirm-wallet");
   };
 
   return (
-    <div className="flex flex-col h-screen bg-gray-100 overflow-hidden">
-      {/* Header with back arrow */}
-      
-
-      {/* Main content container */}
+    <div className="flex flex-col py-10 h-screen bg-gray-100 overflow-hidden justify-between">
       <div className="flex-1 flex flex-col px-4 pb-20">
         {/* Title and Inputs at top */}
-        <div className="flex-shrink-0">
-          <div className="flex items-center p-4 flex-shrink-0 align-middle justify-center">
+        <div className="flex-shrink-0 justify-between">
+          <div className="flex items-center p-3 flex-shrink-0 align-middle justify-middle">
             
-            <h2 className="text-2xl font-bold mb-8 text-center"><button className=" justify-start">
-              <ArrowLeft size={20} />
-            </button> Send to Vendor</h2>
+            <h2 className="text-2xl font-bold mb-8 text-center justify-between flex gap-20">
+              <NavLink
+                  to="/home"
+                  >
+                    <button>
+                      <a href="\home"><ArrowLeft size={20} /></a>
+                  </button>
+                  </NavLink>
+            Send to Vendor</h2>
           </div>
           
           
@@ -36,6 +54,7 @@ const Transfer = () => {
               value={accountNumber}
               onChange={(e) => setAccountNumber(e.target.value)}
               className="p-3 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-orange-400"
+              required
             />
 
             {/* Bank */}
@@ -51,19 +70,21 @@ const Transfer = () => {
               <Building2
                 size={20}
                 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+                required
               />
             </div>
           </div>
         </div>
 
-        {/* Next button in center of remaining space */}
-        <div className="flex-1 flex items-center justify-center">
+        {error && <p className="text-red-500 text-sm mt-2">{error}</p>}
+        
+        <div className="flex-1 flex items-end justify-end">
           <div className="w-full max-w-md">
             <button
               onClick={handleNext}
-              className="bg-orange-500 text-white font-bold py-4 rounded-xl w-full shadow-lg hover:bg-orange-600 transition-colors"
-            >
-              Next
+              className="bg-orange-400 text-white font-bold py-4 rounded-xl w-full shadow-lg hover:bg-orange-500 transition-colors"
+              >
+                Next
             </button>
           </div>
         </div>

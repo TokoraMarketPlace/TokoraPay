@@ -12,7 +12,7 @@ export default function BottomNav({ showNav = true }) {
         to="/"
         className={({ isActive }) =>
           `py-2 px-4 rounded-2xl font-semibold transition-all duration-300 ${
-            isActive ? "bg-orange-500 text-white shadow-inner" : "text-gray-600"
+            isActive ? "bg-orange-400 text-white shadow-inner" : "text-gray-600"
           }`
         }
       >
@@ -23,7 +23,7 @@ export default function BottomNav({ showNav = true }) {
         to="/transfer"
         className={({ isActive }) =>
           `py-2 px-4 rounded-2xl font-semibold transition-all duration-300 ${
-            isActive ? "bg-orange-500 text-white shadow-inner" : "text-gray-600"
+            isActive ? "bg-orange-400 text-white shadow-inner" : "text-gray-600"
           }`
         }
       >
@@ -34,7 +34,7 @@ export default function BottomNav({ showNav = true }) {
         to="/history"
         className={({ isActive }) =>
           `py-2 px-4 rounded-2xl font-semibold transition-all duration-300 ${
-            isActive ? "bg-orange-500 text-white shadow-inner" : "text-gray-600"
+            isActive ? "bg-orange-400 text-white shadow-inner" : "text-gray-600"
           }`
         }
       >
@@ -45,7 +45,7 @@ export default function BottomNav({ showNav = true }) {
         to="/settings"
         className={({ isActive }) =>
           `py-2 px-4 rounded-2xl font-semibold transition-all duration-300 ${
-            isActive ? "bg-orange-500 text-white shadow-inner" : "text-gray-600"
+            isActive ? "bg-orange-400 text-white shadow-inner" : "text-gray-600"
           }`
         }
       >

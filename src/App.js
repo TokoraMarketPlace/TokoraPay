@@ -9,14 +9,21 @@ import Layout from "./components/Layout";
 import Transfer from "./components/Transfer";
 import History from "./components/History.jsx"
 import Setting from "./components/Setting.jsx" ;
+import Confirmwallet from "./components/Confirmwallet.jsx";
+import Sendtovendor from "./components/Sendtovendor.jsx";
 
 function App() {
   return (
+    <div className=" bg-slate-200">
+
     <Routes>
       <Route path="/" element={<Splashscreen />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
       <Route path="/connect-wallet" element={<Connectwallet />} />
+      <Route path="/confirm-wallet" element={<Confirmwallet />} />
+      <Route path="/send" element={<Sendtovendor />} />
+
 
       {/* Pages with bottom navbar */}
       <Route
@@ -53,6 +60,8 @@ function App() {
       />
 
     </Routes>
+
+    </div>
   );
 }
 
