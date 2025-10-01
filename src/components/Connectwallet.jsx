@@ -35,7 +35,7 @@ const ConnectWallet = () => {
       return;
     }
     console.log(`✅ Connecting to ${selectedWallet}`);
-    navigate("/home"); // redirect after connecting
+    navigate("/dashboard"); // redirect after connecting
   };
 
   return (

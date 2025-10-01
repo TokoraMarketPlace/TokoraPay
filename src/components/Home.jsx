@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+// import { NavLink } from "react-router-dom";
 import { Bell, User } from "lucide-react";
 import Logo from "../assets/TokoraPayLogo.png";
-import { FaShare, FaPlane, FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import BGImage from "../assets/2logo.png";
 import TransactionRow from "./TransactionRow";
 import { Icon } from '@iconify/react';
 import paperImage from '@iconify/icons-mdi/paper-plane';
+import { useNavigate } from "react-router-dom";
 
 
 const dummyTransactions = [
@@ -21,18 +22,31 @@ const dummyTransactions = [
 ];
 
 const Home = () => {
-  const [showNav, setShowNav] = useState(false);
+  // const [showNav, setShowNav] = useState(false);
   const [hideBalance, setHideBalance] = useState(false);
   const [expandedHistory, setExpandedHistory] = useState(false);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    setTimeout(() => setShowNav(true), 100); // animate nav up initially
-  }, []);
+  // useEffect(() => {
+  //   setTimeout(() => setShowNav(true), 100); // animate nav up initially
+  // }, []);
 
   const transactionsToShow = expandedHistory ? dummyTransactions.slice(0, 8) : dummyTransactions.slice(0, 4);
 
+  const handleSend = (e) => {
+    navigate("/transfer");
+    };
+
+  const handleDeposit = (e) => {
+    navigate("/deposit");
+    };
+
+  const handleUser =(e)=> {
+    navigate("/settings");
+  }
+
   return (
-    <div className=" h-screen flex flex-col bg-[#E9E7E5] pb-24 relative">
+    <div className=" flex flex-col bg-[#E9E7E5] pb-24 relative">
       {/* Header */}
       <div className="flex justify-between items-center p-4 z-30 relative">
         <img src={Logo} alt="" />
@@ -41,7 +55,7 @@ const Home = () => {
             <Bell size={22} className="text-gray-600" />
             <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full px-1">3</span>
           </button>
-          <button>
+          <button onClick={handleUser}>
             <User size={22} className="text-gray-600" />
           </button>
         </div>
@@ -66,13 +80,17 @@ const Home = () => {
             </button>
           </div>
           <div className="flex gap-4">
-            <button className="flex-1 text-white bg-orange-500 rounded-full py-3 font-semibold flex items-center justify-center gap-3 text-lg">
+            <button
+            onClick={handleSend}
+            className="flex-1 text-white bg-orange-500 rounded-full py-3 font-semibold flex items-center justify-center gap-3 text-lg">
               <Icon icon={paperImage} 
                style={{ transform: "rotate(-45deg)" }} 
               />
                Send
             </button>
-            <button className="flex-1 bg-white text-black rounded-full py-3 font-semibold flex items-center justify-center gap-3 text-lg">
+            <button
+            onClick={handleDeposit}
+            className="flex-1 bg-white text-black rounded-full py-3 font-semibold flex items-center justify-center gap-3 text-lg">
               <Icon icon={paperImage} 
                style={{ transform: "rotate(135deg)" }} 
               />
@@ -135,53 +153,6 @@ const Home = () => {
         </div>
       )}
 
-      {/* Bottom Navigation */}
-      <div
-        className={`fixed left-0 right-0 bottom-1 bg-white rounded-t-3xl shadow-md shadow-gray-300 py-3 px-6 flex justify-between z-50 transition-transform duration-500 ${
-          expandedHistory ? "translate-y-0" : showNav ? "translate-y-0" : "translate-y-full"
-        }`}
-      >
-        <NavLink
-          to="/home"
-          className={({ isActive }) =>
-            `py-2 px-4 rounded-2xl font-semibold transition-all duration-300 ${
-              isActive ? "bg-orange-500 text-white shadow-inner" : "text-gray-600"
-            }`
-          }
-        >
-          Home
-        </NavLink>
-        <NavLink
-          to="/transfer"
-          className={({ isActive }) =>
-            `py-2 px-4 rounded-2xl font-semibold transition-all duration-300 ${
-              isActive ? "bg-orange-500 text-white shadow-inner" : "text-gray-600"
-            }`
-          }
-        >
-          Transfer
-        </NavLink>
-        <NavLink
-          to="/history"
-          className={({ isActive }) =>
-            `py-2 px-4 rounded-2xl font-semibold transition-all duration-300 ${
-              isActive ? "bg-orange-500 text-white shadow-inner" : "text-gray-600"
-            }`
-          }
-        >
-          History
-        </NavLink>
-        <NavLink
-          to="/settings"
-          className={({ isActive }) =>
-            `py-2 px-4 rounded-2xl font-semibold transition-all duration-300 ${
-              isActive ? "bg-orange-500 text-white shadow-inner" : "text-gray-600"
-            }`
-          }
-        >
-          Setting
-        </NavLink>
-      </div>
     </div>
   );
 };

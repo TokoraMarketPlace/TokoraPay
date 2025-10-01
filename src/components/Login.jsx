@@ -22,7 +22,7 @@ const Login = () => {
     }
 
     console.log("✅ Dummy login successful", { phone, countryCode });
-    navigate("/home"); // Just redirect to /home without Firebase
+    navigate("/dashboard"); // Just redirect to /home without Firebase
   };
 
   return (

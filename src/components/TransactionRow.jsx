@@ -1,7 +1,7 @@
-import react from "react";
+// import react from "react";
 
 const TransactionRow = ({ tx }) => (
-  <div className="flex items-center gap-4 bg-[rgba(233,231,229,1)] rounded-xl shadow-sm p-4">
+  <div className="flex items-center gap-4 bg-white rounded-xl shadow-sm p-4">
     {/* Avatar */}
     <div className="w-12 h-12 rounded-full bg-gray-400 flex items-center justify-center text-white font-bold">
       {tx.name.charAt(0)}

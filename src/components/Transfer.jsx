@@ -27,7 +27,7 @@ const Transfer = () => {
   };
 
   return (
-    <div className="flex flex-col py-10 h-screen bg-gray-100 overflow-hidden justify-between">
+    <div className="flex flex-col py-10 h-screen bg-[#E9E7E5]overflow-hidden justify-between">
       <div className="flex-1 flex flex-col px-4 pb-20">
         {/* Title and Inputs at top */}
         <div className="flex-shrink-0 justify-between">
@@ -35,7 +35,7 @@ const Transfer = () => {
             
             <h2 className="text-2xl font-bold mb-8 text-center justify-between flex gap-20">
               <NavLink
-                  to="/home"
+                  to="/dashboard"
                   >
                     <button>
                       <a href="\home"><ArrowLeft size={20} /></a>

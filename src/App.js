@@ -11,10 +11,13 @@ import History from "./components/History.jsx"
 import Setting from "./components/Setting.jsx" ;
 import Confirmwallet from "./components/Confirmwallet.jsx";
 import Sendtovendor from "./components/Sendtovendor.jsx";
+import Deposit from "./components/Deposit.jsx";
+import Moresettimg from "./components/Moresettimg.jsx";
+import Logout from "./components/Logout.jsx";
 
 function App() {
   return (
-    <div className=" bg-slate-200">
+    <div className=" bg-[#E9E7E5]">
 
     <Routes>
       <Route path="/" element={<Splashscreen />} />
@@ -23,11 +26,14 @@ function App() {
       <Route path="/connect-wallet" element={<Connectwallet />} />
       <Route path="/confirm-wallet" element={<Confirmwallet />} />
       <Route path="/send" element={<Sendtovendor />} />
+      <Route path="/deposit" element={<Deposit />} />
+      <Route path="/more" element={<Moresettimg />} />
+      <Route path="/logout" element ={<Logout />} />
 
 
       {/* Pages with bottom navbar */}
       <Route
-        path="/home"
+        path="/dashboard"
         element={
           <Layout>
             <Home />
